@@ -1,2 +1,9 @@
-﻿  Source.cpp
-  Castlevania_17520476.vcxproj -> C:\Users\Hieu Le\source\repos\Castlevania_17520476\Debug\Castlevania_17520476.exe
+﻿  debug.cpp
+  Game.cpp
+  GameObject.cpp
+  Simon.cpp
+  main.cpp
+  Sprites.cpp
+  Textures.cpp
+  Generating Code...
+LINK : fatal error LNK1561: entry point must be defined
