@@ -11,7 +11,7 @@ using namespace std;
 
 #define ID_TEX_BBOX -100		// special texture to draw object bounding box
 
-class CGameObject;
+class CGameObject; 
 typedef CGameObject * LPGAMEOBJECT;
 
 struct CCollisionEvent;
@@ -34,7 +34,7 @@ class CGameObject
 {
 public:
 
-	float x;
+	float x; 
 	float y;
 
 	float dx;	// dx = vx*dt
@@ -43,15 +43,15 @@ public:
 	float vx;
 	float vy;
 
-	int nx;
+	int nx;	 
 
 	int state;
 
-	DWORD dt;
+	DWORD dt; 
 
 	vector<LPANIMATION> animations;
 
-public:
+public: 
 	void SetPosition(float x, float y) { this->x = x, this->y = y; }
 	void SetSpeed(float vx, float vy) { this->vx = vx, this->vy = vy; }
 	void GetPosition(float &x, float &y) { x = this->x; y = this->y; }
@@ -64,11 +64,11 @@ public:
 	LPCOLLISIONEVENT SweptAABBEx(LPGAMEOBJECT coO);
 	void CalcPotentialCollisions(vector<LPGAMEOBJECT> *coObjects, vector<LPCOLLISIONEVENT> &coEvents);
 	void FilterCollision(
-		vector<LPCOLLISIONEVENT> &coEvents,
-		vector<LPCOLLISIONEVENT> &coEventsResult,
-		float &min_tx,
-		float &min_ty,
-		float &nx,
+		vector<LPCOLLISIONEVENT> &coEvents, 
+		vector<LPCOLLISIONEVENT> &coEventsResult, 
+		float &min_tx, 
+		float &min_ty, 
+		float &nx, 
 		float &ny);
 
 	void AddAnimation(int aniId);

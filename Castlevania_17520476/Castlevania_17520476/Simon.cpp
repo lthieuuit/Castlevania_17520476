@@ -20,17 +20,6 @@ void CSIMON::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
 	coEvents.clear();
 
-	// turn off collision when die 
-	if (state != SIMON_STATE_DIE)
-		CalcPotentialCollisions(coObjects, coEvents);
-
-	// reset untouchable timer if untouchable time has passed
-	if (GetTickCount() - untouchable_start > SIMON_UNTOUCHABLE_TIME)
-	{
-		untouchable_start = 0;
-		untouchable = 0;
-	}
-
 	// No collision occured, proceed normally
 	if (coEvents.size() == 0)
 	{
@@ -60,9 +49,6 @@ void CSIMON::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 void CSIMON::Render()
 {
 	int ani;
-	if (state == SIMON_STATE_DIE)
-		ani = SIMON_ANI_DIE;
-	else
 		if (level == SIMON_LEVEL_BIG)
 		{
 			if (vx == 0)
@@ -74,21 +60,6 @@ void CSIMON::Render()
 				ani = SIMON_ANI_BIG_WALKING_RIGHT;
 			else ani = SIMON_ANI_BIG_WALKING_LEFT;
 		}
-		else if (level == SIMON_LEVEL_SMALL)
-		{
-			if (vx == 0)
-			{
-				if (nx > 0) ani = SIMON_ANI_SMALL_IDLE_RIGHT;
-				else ani = SIMON_ANI_SMALL_IDLE_LEFT;
-			}
-			else if (vx > 0)
-				ani = SIMON_ANI_SMALL_WALKING_RIGHT;
-			else ani = SIMON_ANI_SMALL_WALKING_LEFT;
-		}
-
-	int alpha = 255;
-	if (untouchable) alpha = 128;
-	animations[ani]->Render(x, y, alpha);
 
 	RenderBoundingBox();
 }
@@ -112,9 +83,7 @@ void CSIMON::SetState(int state)
 	case SIMON_STATE_IDLE:
 		vx = 0;
 		break;
-	case SIMON_STATE_DIE:
-		vy = -SIMON_DIE_DEFLECT_SPEED;
-		break;
+
 	}
 }
 
@@ -127,10 +96,5 @@ void CSIMON::GetBoundingBox(float &left, float &top, float &right, float &bottom
 	{
 		right = x + SIMON_BIG_BBOX_WIDTH;
 		bottom = y + SIMON_BIG_BBOX_HEIGHT;
-	}
-	else
-	{
-		right = x + SIMON_SMALL_BBOX_WIDTH;
-		bottom = y + SIMON_SMALL_BBOX_HEIGHT;
 	}
 }

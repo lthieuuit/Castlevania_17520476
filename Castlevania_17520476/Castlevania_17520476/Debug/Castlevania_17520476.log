@@ -1,9 +1,5 @@
-﻿  debug.cpp
-  Game.cpp
-  GameObject.cpp
-  Simon.cpp
-  main.cpp
-  Sprites.cpp
-  Textures.cpp
-  Generating Code...
-LINK : fatal error LNK1561: entry point must be defined
+﻿  main.cpp
+c:\users\hieu le\documents\github\castlevania_17520476\castlevania_17520476\castlevania_17520476\main.cpp(154): warning C4018: '<': signed/unsigned mismatch
+c:\users\hieu le\documents\github\castlevania_17520476\castlevania_17520476\castlevania_17520476\main.cpp(159): warning C4018: '<': signed/unsigned mismatch
+c:\users\hieu le\documents\github\castlevania_17520476\castlevania_17520476\castlevania_17520476\main.cpp(191): warning C4018: '<': signed/unsigned mismatch
+  Castlevania_17520476.vcxproj -> C:\Users\Hieu Le\Documents\GitHub\Castlevania_17520476\Castlevania_17520476\Debug\Castlevania_17520476.exe
