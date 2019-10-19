@@ -1,10 +1,8 @@
 #include <algorithm>
 #include "debug.h"
 
-#include "SIMON.h"
+#include "Simon.h"
 #include "Game.h"
-
-#include "GameObject.h"
 
 
 void CSIMON::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
@@ -39,7 +37,6 @@ void CSIMON::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		if (nx != 0) vx = 0;
 		if (ny != 0) vy = 0;
 
-		
 	}
 
 	// clean up collision events
@@ -49,8 +46,7 @@ void CSIMON::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 void CSIMON::Render()
 {
 	int ani;
-		if (level == SIMON_LEVEL_BIG)
-		{
+
 			if (vx == 0)
 			{
 				if (nx > 0) ani = SIMON_ANI_BIG_IDLE_RIGHT;
@@ -59,7 +55,8 @@ void CSIMON::Render()
 			else if (vx > 0)
 				ani = SIMON_ANI_BIG_WALKING_RIGHT;
 			else ani = SIMON_ANI_BIG_WALKING_LEFT;
-		}
+		
+	animations[ani]->Render(x, y, 255);
 
 	RenderBoundingBox();
 }
@@ -83,7 +80,6 @@ void CSIMON::SetState(int state)
 	case SIMON_STATE_IDLE:
 		vx = 0;
 		break;
-
 	}
 }
 
@@ -98,3 +94,4 @@ void CSIMON::GetBoundingBox(float &left, float &top, float &right, float &bottom
 		bottom = y + SIMON_BIG_BBOX_HEIGHT;
 	}
 }
+

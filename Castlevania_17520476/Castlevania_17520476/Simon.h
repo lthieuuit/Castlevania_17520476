@@ -1,5 +1,4 @@
 #pragma once
-
 #include "GameObject.h"
 
 #define SIMON_WALKING_SPEED		0.1f 
@@ -14,20 +13,22 @@
 #define SIMON_STATE_WALKING_LEFT	200
 #define SIMON_STATE_JUMP			300
 
-
 #define SIMON_ANI_BIG_IDLE_RIGHT		0
 #define SIMON_ANI_BIG_IDLE_LEFT			1
+#define SIMON_ANI_SMALL_IDLE_RIGHT		2
+#define SIMON_ANI_SMALL_IDLE_LEFT			3
 
 #define SIMON_ANI_BIG_WALKING_RIGHT			4
 #define SIMON_ANI_BIG_WALKING_LEFT			5
 
 
+
+
 #define	SIMON_LEVEL_SMALL	1
-#define	SIMON_LEVEL_BIG		2
+#define SIMON_LEVEL_BIG		2
 
 #define SIMON_BIG_BBOX_WIDTH  15
 #define SIMON_BIG_BBOX_HEIGHT 27
-
 
 class CSIMON : public CGameObject
 {
@@ -38,6 +39,7 @@ public:
 	CSIMON() : CGameObject()
 	{
 		level = SIMON_LEVEL_BIG;
+		untouchable = 0;
 	}
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *colliable_objects = NULL);
 	virtual void Render();
